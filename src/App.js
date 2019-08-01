@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
 import List from './List'
 import './App.css';
+import store from './STORE';
 
 class App extends Component {
-  static defaultProps = {
+  state= {
     store: {
-      lists: [],
-      allCards: {},
+      lists: store.lists,
+      allCards: store.allCards,
     }
   };
+   
+  function handleRandomCard(){
+    
+    const newRandomCard = () => {
+      const id = Math.random().toString(36).substring(2, 4)
+        + Math.random().toString(36).substring(2, 4);
+      return {
+        id,
+        title: `Random Card ${id}`,
+        content: 'lorem ipsum',
+      }
+    }
+    this.setState({
+      store: store
+    })
+  }
+  
 
   render() {
-    const { store } = this.props
+    const { store } = this.state
     return (
       <main className='App'>
         <header className='App-header'>

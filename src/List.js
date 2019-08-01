@@ -3,6 +3,8 @@ import Card from "./Card";
 import "./List.css";
 
 export default function List(props) {
+ 
+  
   return (
     <section className="List">
       <header className="List-header">
@@ -12,7 +14,7 @@ export default function List(props) {
         {props.cards.map(card => (
           <Card key={card.id} title={card.title} content={card.content} />
         ))}
-        <button type="button" className="List-add-button">
+        <button type="button" className="List-add-button" onClick={() => handleRandomCard()}>
           + Add Random Card
         </button>
       </div>
